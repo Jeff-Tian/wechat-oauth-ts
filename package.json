@@ -25,9 +25,11 @@
   "devDependencies": {
     "@types/mocha": "^5.2.6",
     "axios-mock-adapter": "latest",
+    "coveralls": "^3.0.3",
     "cross-env": "^5.2.0",
     "espower-typescript": "^9.0.1",
     "mocha": "^5.2.0",
+    "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^13.3.0",
     "prettier": "^1.16.2",
     "prettier-tslint": "^0.4.2",
