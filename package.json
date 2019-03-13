@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "TS_NODE_TRANSPILE_ONLY=1 mocha --require espower-typescript/guess --timeout 3000 --exit 'src/test/*.test.ts'",
+    "test:coverage": "TS_NODE_COMPILER_OPTIONS='{\"target\":\"es6\"}' nyc npm test",
     "build": "tsc -p tsconfig.json",
     "prepare": "npm run build"
   },
@@ -23,9 +24,11 @@
   },
   "devDependencies": {
     "@types/mocha": "^5.2.6",
+    "axios-mock-adapter": "latest",
     "cross-env": "^5.2.0",
     "espower-typescript": "^9.0.1",
     "mocha": "^5.2.0",
+    "nyc": "^13.3.0",
     "prettier": "^1.16.2",
     "prettier-tslint": "^0.4.2",
     "source-map-support": "^0.5.10",
@@ -35,9 +38,28 @@
     "tslint": "^5.12.1",
     "tslint-config-prettier": "^1.17.0",
     "tslint-plugin-prettier": "^2.0.1",
-    "typescript": "^3.3.3",
     "typemoq": "latest",
-    "axios-mock-adapter": "latest"
+    "typescript": "^3.3.3"
   },
-  "types": "lib/index.d.ts"
+  "types": "lib/index.d.ts",
+  "nyc": {
+    "check-coverage": true,
+    "all": true,
+    "extension": [
+      ".js",
+      ".jsx",
+      ".ts",
+      ".tsx"
+    ],
+    "include": [
+      "src/**/!(*.test.*).[tj]s?(x)"
+    ],
+    "reporter": [
+      "html",
+      "lcov",
+      "text",
+      "text-summary"
+    ],
+    "report-dir": "docs/reports/coverage"
+  }
 }

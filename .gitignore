@@ -53,3 +53,6 @@ logs/
 *.js
 .vscode
 lib
+
+.nyc_output
+docs
