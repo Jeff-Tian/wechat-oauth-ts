@@ -5,7 +5,7 @@
 ## 模块状态
 
 - [![NPM version](https://badge.fury.io/js/wechat-oauth-ts.png)](http://badge.fury.io/js/wechat-oauth-ts)
-- [![Build Status](https://travis-ci.org/node-webot/wechat-oauth.png?branch=master)](https://travis-ci.org/node-webot/wechat-oauth)
+- [![Build Status](https://travis-ci.com/Jeff-Tian/wechat-oauth-ts.svg?branch=master)](https://travis-ci.com/Jeff-Tian/wechat-oauth-ts)
 - [![Dependencies Status](https://david-dm.org/Jeff-Tian/wechat-oauth-ts.png)](https://david-dm.org/jeff-tian/wechat-oauth-ts)
 - [![Coverage Status](https://coveralls.io/repos/github/Jeff-Tian/wechat-oauth-ts/badge.svg?branch=master)](https://coveralls.io/github/Jeff-Tian/wechat-oauth-ts?branch=master)
 
