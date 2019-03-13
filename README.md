@@ -2,6 +2,15 @@
 
 > [微信公共平台 OAuth 接口消息服务中间件与 API SDK](https://github.com/node-webot/wechat-oauth) (TypeScript 版)
 
+## 模块状态
+
+- [![NPM version](https://badge.fury.io/js/wechat-oauth-ts.png)](http://badge.fury.io/js/wechat-oauth-ts)
+- [![Build Status](https://travis-ci.org/node-webot/wechat-oauth.png?branch=master)](https://travis-ci.org/node-webot/wechat-oauth)
+- [![Dependencies Status](https://david-dm.org/Jeff-Tian/wechat-oauth-ts.png)](https://david-dm
+  .org/jeff-tian/wechat-oauth-ts)
+- [![Coverage Status](https://coveralls.io/repos/jeff-tian/wechat-oauth-ts/badge.png)](https://coveralls
+  .io/r/jeff-tian/wechat-oauth-ts)
+
 ## 功能列表
 
 - OAuth 授权
