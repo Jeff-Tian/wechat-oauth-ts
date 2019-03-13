@@ -31,14 +31,14 @@ npm install wechat-oauth-ts
 引入 OAuth 并实例化
 
 ```typescript
-import WechatOAuth from 'wechat-oauth'
+import WechatOAuth from 'wechat-oauth-ts'
 const authClient = new WechatOAuth('appid', 'appsecret')
 ```
 
 以上即可满足单进程使用。 当多进程时，token 需要全局维护，以下为保存 token 的接口。
 
 ```typescript
-import WechatOAuth from 'wechat-oauth'
+import WechatOAuth from 'wechat-oauth-ts'
 
 const oauthApi = new WechatOAuth(
   'appid',
