@@ -2,12 +2,15 @@
 
 > [微信公共平台 OAuth 接口消息服务中间件与 API SDK](https://github.com/node-webot/wechat-oauth) (TypeScript 版)
 
-## 模块状态
+[![npm download][download-image]][download-url]
+[![NPM version](https://badge.fury.io/js/wechat-oauth-ts.png)](http://badge.fury.io/js/wechat-oauth-ts)
+[![Build Status](https://travis-ci.com/Jeff-Tian/wechat-oauth-ts.svg?branch=master)](https://travis-ci.com/Jeff-Tian/wechat-oauth-ts)
+[![Dependencies Status](https://david-dm.org/Jeff-Tian/wechat-oauth-ts.png)](https://david-dm.org/jeff-tian/wechat-oauth-ts)
+[![Coverage Status](https://coveralls.io/repos/github/Jeff-Tian/wechat-oauth-ts/badge.svg?branch=master)](https://coveralls.io/github/Jeff-Tian/wechat-oauth-ts?branch=master)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/Jeff-Tian/wechat-oauth-ts)
 
-- [![NPM version](https://badge.fury.io/js/wechat-oauth-ts.png)](http://badge.fury.io/js/wechat-oauth-ts)
-- [![Build Status](https://travis-ci.com/Jeff-Tian/wechat-oauth-ts.svg?branch=master)](https://travis-ci.com/Jeff-Tian/wechat-oauth-ts)
-- [![Dependencies Status](https://david-dm.org/Jeff-Tian/wechat-oauth-ts.png)](https://david-dm.org/jeff-tian/wechat-oauth-ts)
-- [![Coverage Status](https://coveralls.io/repos/github/Jeff-Tian/wechat-oauth-ts/badge.svg?branch=master)](https://coveralls.io/github/Jeff-Tian/wechat-oauth-ts?branch=master)
+[download-image]: https://img.shields.io/npm/dm/wechat-oauth-ts.svg?style=flat-square
+[download-url]: https://npmjs.org/package/wechat-oauth-ts
 
 ## 功能列表
 
