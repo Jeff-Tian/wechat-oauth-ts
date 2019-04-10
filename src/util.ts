@@ -1,5 +1,6 @@
 class WechatAPIError extends Error {
   public code!: string
+  public meta!: object
 
   constructor(msg: string) {
     super(msg)
@@ -16,6 +17,7 @@ export const wrapper = (requestFunc: (url: string, options?: object) => Promise<
       if (data.errcode) {
         const error = new WechatAPIError(data.errmsg)
         error.code = data.errcode
+        error.meta = { url, options }
 
         throw error
       }
