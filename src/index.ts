@@ -138,6 +138,17 @@ export default class WechatOAuth {
     return this.processAccessToken(url, info)
   }
 
+  public async getClientAccessToken() {
+    const url = 'https://api.weixin.qq.com/cgi-bin/token'
+    const info = {
+      grant_type: 'client_credential',
+      appid: this.appId,
+      secret: this.appSecret,
+    }
+
+    return this.processAccessToken(url, info)
+  }
+
   public async refreshAccessToken(refreshToken: string) {
     const url = 'https://api.weixin.qq.com/sns/oauth2/refresh_token'
     const info = {

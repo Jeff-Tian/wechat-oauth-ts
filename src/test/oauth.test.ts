@@ -145,6 +145,34 @@ describe('wechat oauth', () => {
     })
   })
 
+  describe('getClientAccessToken', function() {
+    const api = new WechatOAuth(config.appid, config.appsecret)
+
+    describe('should ok', () => {
+      let mock: MockAdapter
+
+      before(() => {
+        mock = new MockAdapter(axios)
+        mock.onGet(/.+/).replyOnce(200, {
+          access_token: 'ACCESS_TOKEN',
+          expires_in: 7200,
+        })
+      })
+
+      after(() => {
+        mock.restore()
+      })
+
+      it('should ok', async () => {
+        const result = await api.getClientAccessToken()
+
+        const keys = ['access_token', 'expires_in']
+
+        keys.map(k => assert(Object.keys(result).includes(k)))
+      })
+    })
+  })
+
   describe('refreshAccessToken', () => {
     const api = new WechatOAuth('appid', 'secret')
 
