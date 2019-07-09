@@ -195,6 +195,36 @@ export default class WechatOAuth {
     return this.getUserByOpenId(openId, lang)
   }
 
+  public async getQRCodeTicket(
+    data: any = { expire_seconds: 604800, action_name: 'QR_SCENE', action_info: { scene: { scene_id: 123 } } },
+    token?: string,
+  ): Promise<{ ticket: string; expire_seconds: number; url: string }> {
+    if (!token) {
+      token = (await this.getClientAccessToken()).access_token
+    }
+
+    const url = 'https://api.weixin.qq.com/cgi-bin/qrcode/create'
+
+    return await wrapper(axios.post)(url + '?' + querystring.stringify({ access_token: token }), data)
+  }
+
+  public async getQRCode(
+    data: any = { expire_seconds: 604800, action_name: 'QR_SCENE', action_info: { scene: { scene_id: 123 } } },
+    token?: string,
+  ) {
+    const ticketResult = await this.getQRCodeTicket(data, token)
+
+    const url = 'https://mp.weixin.qq.com/cgi-bin/showqrcode'
+
+    return await wrapper(axios.get)(
+      url +
+        '?' +
+        querystring.stringify({
+          ticket: encodeURIComponent(ticketResult.ticket),
+        }),
+    )
+  }
+
   private async processAccessToken(url: string, info) {
     const time = new Date().getTime()
 

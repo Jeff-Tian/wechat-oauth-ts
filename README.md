@@ -110,7 +110,7 @@ mongoose.model('Token', 'TokenSchema')
 初始化：
 
 ```typescript
-var client = new OAuth(
+var client = new WechatOAuth(
   appid,
   secret,
   function(openid, callback) {
@@ -150,7 +150,7 @@ ALTER TABLE `token`
 使用示例：
 
 ```typescript
-var client = new Oauth(
+var client = new WechatOAuth(
   appid,
   secret,
   function(openid, callback) {
@@ -202,6 +202,20 @@ client.getAccessToken('code', function(err, result) {
 })
 ```
 
+### 获取客户端 AccessToken
+
+```typescript
+const result = await client.getClientAccessToken()
+
+/*
+{
+  "access_token": "xxx",
+  "created_at": 1562670918531,
+  "expires_in": 7200
+}
+ */
+```
+
 ### 获取用户信息
 
 如果我们生成引导用户点击的 URL 中 scope 参数值为 snsapi_userinfo，接下来我们就可以使用 openid 换取用户详细信息（必须在 getAccessToken 方法执行完成之后）
@@ -209,6 +223,18 @@ client.getAccessToken('code', function(err, result) {
 ```typescript
 client.getUser(openid, function(err, result) {
   var userInfo = result
+})
+```
+
+### 生成带参数的二维码
+
+```typescript
+const result = await client.getQRCode({
+  expire_seconds: 604800,
+  action_name: 'QR_SCENE',
+  action_info: {
+    scene: { scene_id: 123 },
+  },
 })
 ```
 

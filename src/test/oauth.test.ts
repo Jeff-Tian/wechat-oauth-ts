@@ -173,6 +173,8 @@ describe('wechat oauth', () => {
     })
   })
 
+  // describe('should ok', () => {})
+
   describe('refreshAccessToken', () => {
     const api = new WechatOAuth('appid', 'secret')
 
