@@ -1,4 +1,4 @@
-class WechatAPIError extends Error {
+export class WechatAPIError extends Error {
   public code!: string
   public meta!: object
 

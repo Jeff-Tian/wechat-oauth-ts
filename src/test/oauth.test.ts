@@ -3,6 +3,7 @@ import WechatOAuth, { AccessToken } from '../index'
 import axios from 'axios'
 import MockAdapter from 'axios-mock-adapter'
 import * as TypeMoq from 'typemoq'
+import { WechatAPIError } from '../util'
 
 describe('smoke', () => {
   it('works', () => {
@@ -448,6 +449,36 @@ describe('wechat oauth', () => {
     it('should ok with getUserByCode', async () => {
       const res = await mock.target.getUserByCode('code')
       expectedKeys.map(k => assert(Object.keys(res).includes(k)))
+    })
+  })
+
+  describe('getQRCode', () => {
+    it('should invalid', async () => {
+      const api = new WechatOAuth('appid', 'secret')
+      try {
+        await api.getQRCode()
+        assert.fail('should invalid')
+      } catch (ex) {
+        assert.ok(ex instanceof WechatAPIError)
+      }
+    })
+
+    it('should invalid appsecret', async () => {
+      const api = new WechatOAuth('wxbf55a374f85ce4b1', 'secret')
+      try {
+        await api.getQRCode()
+        assert.fail('should invalid')
+      } catch (ex) {
+        assert.ok(ex instanceof WechatAPIError)
+        assert.ok(ex.message.startsWith('invalid appsecret'))
+      }
+    })
+
+    it('should ok', async () => {
+      const api = new WechatOAuth(process.env.wechatAppId!, process.env.wechatAppSecret!)
+      const res = await api.getQRCode()
+      console.log('res = ', res)
+      assert.ok(res.data)
     })
   })
 })
