@@ -228,15 +228,21 @@ client.getUser(openid, function(err, result) {
 
 ### 生成带参数的二维码
 
-```typescript
-const result = await client.getQRCode({
-  expire_seconds: 604800,
-  action_name: 'QR_SCENE',
-  action_info: {
-    scene: { scene_id: 123 },
-  },
-})
-```
+- 示例代码：
+  ```typescript
+  const result = await client.getQRCodeLink({
+    expire_seconds: 604800,
+    action_name: 'QR_SCENE',
+    action_info: {
+      scene: { scene_id: 123 },
+    },
+  })
+  ```
+- 实际案例：
+  https://github.com/Jeff-Tian/alpha/blob/master/app/controller/wechat-dev.ts#L12
+
+- 实际效果：
+  ![生成的二维码](https://uniheart.herokuapp.com/wechat-dev/qr-code?select=passportWechat)
 
 ## 开发
 
