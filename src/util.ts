@@ -9,20 +9,20 @@ class WechatAPIError extends Error {
   }
 }
 
-export const wrapper = (requestFunc: (url: string, options?: object) => Promise<any>) => {
+export const wrapper = (requestFunc: (url: string, options?: object) => Promise<any>, raw = false) => {
   return async (url: string, options?: object) => {
     try {
-      const { data } = await requestFunc(url, options)
+      const res = await requestFunc(url, options)
 
-      if (data.errcode) {
-        const error = new WechatAPIError(data.errmsg)
-        error.code = data.errcode
+      if (res.data.errcode) {
+        const error = new WechatAPIError(res.data.errmsg)
+        error.code = res.data.errcode
         error.meta = { url, options }
 
         throw error
       }
 
-      return data
+      return raw ? res : res.data
     } catch (err) {
       if (!(err instanceof WechatAPIError)) {
         err.name = 'WechatAPI' + err.name

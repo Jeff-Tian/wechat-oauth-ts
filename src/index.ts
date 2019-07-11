@@ -220,7 +220,7 @@ export default class WechatOAuth {
   public static async getQRCodeByTicket(ticket: string) {
     const url = 'https://mp.weixin.qq.com/cgi-bin/showqrcode'
 
-    return await wrapper(axios.get)(
+    return await wrapper(axios.get, true)(
       url +
         '?' +
         querystring.stringify({
