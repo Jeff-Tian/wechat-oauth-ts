@@ -223,11 +223,15 @@ export default class WechatOAuth {
   ) {
     const ticketResult = await this.getQRCodeTicket(data, token)
 
+    return this.getQRCodeLinkByTicket(ticketResult.ticket)
+  }
+
+  public async getQRCodeLinkByTicket(ticket: string) {
     return (
       'https://mp.weixin.qq.com/cgi-bin/showqrcode' +
       '?' +
       querystring.stringify({
-        ticket: encodeURIComponent(ticketResult.ticket),
+        ticket: encodeURIComponent(ticket),
       })
     )
   }
