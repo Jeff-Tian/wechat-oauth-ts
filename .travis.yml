@@ -6,7 +6,7 @@ script: npm run test:coverage && nyc report --reporter=text-lcov | coveralls
 jobs:
   include:
     - stage: release
-      node_js lts/*
+      node_js: lts/*
       script: skip
       deploy:
         provider: script

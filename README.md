@@ -174,9 +174,11 @@ var client = new WechatOAuth(
 )
 ```
 
-### 小程序初始化 (TODO)
+### 小程序专用 
 
-使用小程序时，需要在初始化 OAuth 时指定 isMiniProgram 参数为 true
+```typescript
+var url = await client.code2Session('code')
+```
 
 ### 引导用户
 
@@ -243,7 +245,7 @@ client.getUser(openid, function(err, result) {
   https://github.com/Jeff-Tian/alpha/blob/master/app/controller/wechat-dev.ts#L12
 
 - 实际效果：
-  ![生成的二维码](https://uniheart.herokuapp.com/wechat-dev/qr-code?select=passportWechat)
+  [![生成的二维码](https://uniheart.herokuapp.com/wechat-dev/qr-code?select=passportWechat)](https://uniheart.herokuapp.com/wechat-dev/qr-code?select=passportWechat)
 
 ## 开发
 
