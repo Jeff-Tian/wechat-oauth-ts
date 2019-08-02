@@ -9,6 +9,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/Jeff-Tian/wechat-oauth-ts/badge.svg?branch=master)](https://coveralls.io/github/Jeff-Tian/wechat-oauth-ts?branch=master)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/Jeff-Tian/wechat-oauth-ts)
 [![Git commit with emojis!](https://img.shields.io/badge/gitmoji-git%20commit%20with%20emojis!-brightgreen.svg)](https://gitmoji.js.org)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 [download-image]: https://img.shields.io/npm/dm/wechat-oauth-ts.svg?style=flat-square
 [download-url]: https://npmjs.org/package/wechat-oauth-ts
@@ -174,7 +175,7 @@ var client = new WechatOAuth(
 )
 ```
 
-### 小程序专用 
+### 小程序专用
 
 ```typescript
 var url = await client.code2Session('code')
@@ -260,3 +261,5 @@ client.getUser(openid, function(err, result) {
 2. `git commit`
 3. `npm version patch/minor/major`
 4. `npm publish`
+
+![](https://github.com/semantic-release/semantic-release/raw/master/media/bender.png)
