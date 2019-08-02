@@ -1,6 +1,6 @@
 # wechat-oauth-ts
 
-> [微信公共平台 OAuth 接口消息服务中间件与 API SDK](https://github.com/node-webot/wechat-oauth) (TypeScript 版)
+> [微信公众平台 OAuth 接口消息服务中间件与 API SDK](https://github.com/node-webot/wechat-oauth) (TypeScript 版)
 
 [![npm download][download-image]][download-url]
 [![NPM version](https://badge.fury.io/js/wechat-oauth-ts.png)](http://badge.fury.io/js/wechat-oauth-ts)
