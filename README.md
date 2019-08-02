@@ -8,6 +8,7 @@
 [![Dependencies Status](https://david-dm.org/Jeff-Tian/wechat-oauth-ts.png)](https://david-dm.org/jeff-tian/wechat-oauth-ts)
 [![Coverage Status](https://coveralls.io/repos/github/Jeff-Tian/wechat-oauth-ts/badge.svg?branch=master)](https://coveralls.io/github/Jeff-Tian/wechat-oauth-ts?branch=master)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/Jeff-Tian/wechat-oauth-ts)
+[![Git commit with emojis!](https://img.shields.io/badge/gitmoji-git%20commit%20with%20emojis!-brightgreen.svg)](https://gitmoji.js.org)
 
 [download-image]: https://img.shields.io/npm/dm/wechat-oauth-ts.svg?style=flat-square
 [download-url]: https://npmjs.org/package/wechat-oauth-ts

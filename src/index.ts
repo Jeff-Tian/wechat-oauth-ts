@@ -254,6 +254,18 @@ export default class WechatOAuth {
     )
   }
 
+  public async code2Session(code: string) {
+    const url = 'https://api.weixin.qq.com/sns/jscode2session'
+    const info = {
+      appid: this.appId,
+      secret: this.appSecret,
+      js_code: code,
+      grant_type: 'authorization_code',
+    }
+
+    return await wrapper(axios.get)(url + '?' + querystring.stringify(info))
+  }
+
   private async processAccessToken(url: string, info) {
     const time = new Date().getTime()
 
