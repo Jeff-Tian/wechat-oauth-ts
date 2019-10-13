@@ -24,7 +24,7 @@ describe('wechat oauth', () => {
       const url = auth.getAuthorizeURL('http://diveintonode.org/')
       assert(
         url ===
-          'https://open.weixin.qq.com/connect/oauth2/authorize?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_base&state=#wechat_redirect',
+        'https://open.weixin.qq.com/connect/oauth2/authorize?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_base&state=#wechat_redirect',
       )
     })
 
@@ -32,7 +32,7 @@ describe('wechat oauth', () => {
       const url = auth.getAuthorizeURL('http://diveintonode.org/', 'hehe')
       assert(
         url ===
-          'https://open.weixin.qq.com/connect/oauth2/authorize?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_base&state=hehe#wechat_redirect',
+        'https://open.weixin.qq.com/connect/oauth2/authorize?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_base&state=hehe#wechat_redirect',
       )
     })
 
@@ -40,7 +40,7 @@ describe('wechat oauth', () => {
       const url = auth.getAuthorizeURL('http://diveintonode.org/', 'hehe', 'snsapi_userinfo')
       assert(
         url ===
-          'https://open.weixin.qq.com/connect/oauth2/authorize?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_userinfo&state=hehe#wechat_redirect',
+        'https://open.weixin.qq.com/connect/oauth2/authorize?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_userinfo&state=hehe#wechat_redirect',
       )
     })
   })
@@ -50,7 +50,7 @@ describe('wechat oauth', () => {
       const url = auth.getAuthorizeURLForWebsite('http://diveintonode.org/')
       assert(
         url ===
-          'https://open.weixin.qq.com/connect/qrconnect?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_login&state=#wechat_redirect',
+        'https://open.weixin.qq.com/connect/qrconnect?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_login&state=#wechat_redirect',
       )
     })
 
@@ -59,7 +59,7 @@ describe('wechat oauth', () => {
 
       assert(
         url ===
-          'https://open.weixin.qq.com/connect/qrconnect?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_login&state=hehe#wechat_redirect',
+        'https://open.weixin.qq.com/connect/qrconnect?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_login&state=hehe#wechat_redirect',
       )
     })
 
@@ -68,7 +68,7 @@ describe('wechat oauth', () => {
 
       assert(
         url ===
-          'https://open.weixin.qq.com/connect/qrconnect?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_userinfo&state=hehe#wechat_redirect',
+        'https://open.weixin.qq.com/connect/qrconnect?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_userinfo&state=hehe#wechat_redirect',
       )
     })
   })
@@ -146,7 +146,7 @@ describe('wechat oauth', () => {
     })
   })
 
-  describe('getClientAccessToken', function() {
+  describe('getClientAccessToken', function () {
     const api = new WechatOAuth(config.appid, config.appsecret)
 
     describe('should ok', () => {
@@ -480,6 +480,41 @@ describe('wechat oauth', () => {
       const res = await api.getQRCode()
       console.log('res = ', res)
       assert.ok(res.data)
+    })
+  })
+
+  describe('getJsApiTicket', () => {
+    let mock: MockAdapter
+
+    before(() => {
+      mock = new MockAdapter(axios)
+
+      mock.onGet(/https:\/\/api\.weixin\.qq\.com\/cgi\-bin\/token\?.+/).replyOnce(200, {
+        access_token: 'whatever',
+      })
+
+      mock.onGet(/https:\/\/api\.weixin\.qq\.com\/cgi\-bin\/ticket\/getticket\?.+/).replyOnce(200, {
+        "errcode": 0,
+        "errmsg": "ok",
+        "ticket": "bxLdikRXVbTPdHSM05e5u5sUoXNKd8-41ZO3MhKoyN5OfkWITDGgnr2fwJ0m9E8NYzWKVZvdVtaUgWvsdshFKA",
+        "expires_in": 7200
+      })
+    })
+
+    after(() => {
+      mock.restore()
+    })
+
+    it('should get jsapi_ticket', async () => {
+      const api = new WechatOAuth(process.env.wechatAppId!, process.env.wechatAppSecret!)
+
+      const res = await api.getJsApiTicket()
+      assert.deepStrictEqual(res, {
+        "errcode": 0,
+        "errmsg": "ok",
+        "ticket": "bxLdikRXVbTPdHSM05e5u5sUoXNKd8-41ZO3MhKoyN5OfkWITDGgnr2fwJ0m9E8NYzWKVZvdVtaUgWvsdshFKA",
+        "expires_in": 7200
+      })
     })
   })
 })

@@ -19,6 +19,7 @@
 - OAuth 授权
 - 获取基本信息
 - 生成带参二维码
+- 获取 jsapi_ticket
 
 OAuth2.0 网页授权，使用此接口须通过微信认证（或者使用微信测试公众号，不过这要求用户必须先关注该测试号，并且最多只能有 100 个用户。），如果用户在微信中（Web 微信除外）访问公众号的第三方网页，公众号开发者可以通过此接口获取当前用户基本信息（包括昵称、性别、城市、国家）。详见：[官方文档](http://mp.weixin.qq.com/wiki/index.php?title=%E7%BD%91%E9%A1%B5%E6%8E%88%E6%9D%83%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF)
 
@@ -247,7 +248,19 @@ client.getUser(openid, function(err, result) {
   https://github.com/Jeff-Tian/alpha/blob/master/app/controller/wechat-dev.ts#L12
 
 - 实际效果：
-  [![生成的二维码](https://uniheart.herokuapp.com/wechat-dev/qr-code?select=passportWechat)](https://uniheart.herokuapp.com/wechat-dev/qr-code?select=passportWechat)
+  [![生成的二维码](https://uniheart.herokuapp.com/wechat-dev/qr-code?select=wechat)](https://uniheart.herokuapp.com/wechat-dev/qr-code?select=wechat)
+
+### 获取 jsapi_ticket
+
+```typescript
+const res = await api.getJsApiTicket()
+assert.deepStrictEqual(res, {
+  "errcode": 0,
+  "errmsg": "ok",
+  "ticket": "bxLdikRXVbTPdHSM05e5u5sUoXNKd8-41ZO3MhKoyN5OfkWITDGgnr2fwJ0m9E8NYzWKVZvdVtaUgWvsdshFKA",
+  "expires_in": 7200
+})
+```
 
 ## 开发
 

@@ -89,8 +89,8 @@ export default class WechatOAuth {
     this.logger = logger
     this.getToken = !getToken
       ? (openId: string) => {
-          return this.store[openId]
-        }
+        return this.store[openId]
+      }
       : getToken
 
     if (!saveToken && (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'prod')) {
@@ -241,10 +241,10 @@ export default class WechatOAuth {
 
     return await wrapper(axios.get, raw)(
       url +
-        '?' +
-        querystring.stringify({
-          ticket: encodeURIComponent(ticket),
-        }),
+      '?' +
+      querystring.stringify({
+        ticket: encodeURIComponent(ticket),
+      }),
       {
         headers: {
           Accept:
@@ -264,6 +264,16 @@ export default class WechatOAuth {
     }
 
     return await wrapper(axios.get)(url + '?' + querystring.stringify(info))
+  }
+
+  public async getJsApiTicket(accessToken?: string) {
+    if (!accessToken) {
+      accessToken = (await this.getClientAccessToken()).access_token
+    }
+
+    const url = `https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=${accessToken}&type=jsapi`
+
+    return await wrapper(axios.get)(url)
   }
 
   private async processAccessToken(url: string, info) {
