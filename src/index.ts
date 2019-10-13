@@ -248,7 +248,7 @@ export default class WechatOAuth {
       {
         headers: {
           Accept:
-            'ext/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+            'ext/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/png,image/jpg,*/*;q=0.8,application/signed-exchange;v=b3',
         },
       },
     )
@@ -274,6 +274,21 @@ export default class WechatOAuth {
     const url = `https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=${accessToken}&type=jsapi`
 
     return await wrapper(axios.get)(url)
+  }
+
+  public async jsSDKSign(url: string, jsApiTicket?: string): Promise<{
+    jsapi_ticket: string,
+    nonceStr: string,
+    signature: string,
+    timestamp: string,
+    url: string
+  }> {
+    if (!jsApiTicket) {
+      jsApiTicket = await this.getJsApiTicket()
+    }
+
+    const sign = require('./sign.js')
+    return sign(jsApiTicket, url)
   }
 
   private async processAccessToken(url: string, info) {

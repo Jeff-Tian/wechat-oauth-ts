@@ -483,7 +483,7 @@ describe('wechat oauth', () => {
     })
   })
 
-  describe('getJsApiTicket', () => {
+  describe('JS-SDK', () => {
     let mock: MockAdapter
 
     before(() => {
@@ -515,6 +515,16 @@ describe('wechat oauth', () => {
         "ticket": "bxLdikRXVbTPdHSM05e5u5sUoXNKd8-41ZO3MhKoyN5OfkWITDGgnr2fwJ0m9E8NYzWKVZvdVtaUgWvsdshFKA",
         "expires_in": 7200
       })
+    })
+
+    it('should sign', async () => {
+      const api = new WechatOAuth(process.env.wechatAppId!, process.env.wechatAppSecret!)
+
+      const res = await api.jsSDKSign('https://uniheart.herokuapp.com', 'sM4AOVdWfPE4DxkXGEs8VMCPGGVi4C3VM0P37wVUCFvkVAy_90u5h9nbSlYy3-Sl-HhTdfl2fzFy1AOcHKP7qg')
+
+      assert.ok(res.nonceStr)
+      assert.ok(res.signature)
+      assert.ok(res.timestamp)
     })
   })
 })

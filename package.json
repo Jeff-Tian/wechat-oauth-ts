@@ -4,7 +4,8 @@
   "description": "wechat oauth typescript version",
   "main": "lib/index.js",
   "directories": {
-    "lib": "lib"
+    "lib": "lib",
+    "test": "src/test"
   },
   "scripts": {
     "test": "TS_NODE_TRANSPILE_ONLY=1 mocha --require espower-typescript/guess --timeout 3000 --exit 'src/test/*.test.ts'",
@@ -21,7 +22,8 @@
   "license": "ISC",
   "dependencies": {
     "@types/node": "^11.9.4",
-    "axios": "latest"
+    "axios": "latest",
+    "jssha": "^1.5.0"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.6",
@@ -32,8 +34,10 @@
     "mocha": "^5.2.0",
     "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^13.3.0",
+    "power-assert": "^1.6.1",
     "prettier": "^1.16.2",
     "prettier-tslint": "^0.4.2",
+    "semantic-release": "^15.13.19",
     "source-map-support": "^0.5.10",
     "ts-node": "^8.0.2",
     "ts-node-dev": "^1.0.0-pre.30",
@@ -42,8 +46,7 @@
     "tslint-config-prettier": "^1.17.0",
     "tslint-plugin-prettier": "^2.0.1",
     "typemoq": "latest",
-    "typescript": "^3.3.3",
-    "semantic-release": "^15.13.19"
+    "typescript": "^3.3.3"
   },
   "types": "lib/index.d.ts",
   "nyc": {
