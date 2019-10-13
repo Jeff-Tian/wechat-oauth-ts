@@ -70,7 +70,7 @@ export class AccessToken implements IAccessToken {
 
 export default class WechatOAuth {
   public readonly getToken: (openId: string) => any
-  private readonly appId: string
+  public readonly appId: string
   private readonly appSecret: string
   private readonly saveToken!: (openid: string, token: object) => void
   private readonly store: any
