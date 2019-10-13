@@ -287,7 +287,7 @@ export default class WechatOAuth {
       jsApiTicket = await this.getJsApiTicket()
     }
 
-    const sign = require('./sign.js')
+    const sign = require('./sign')
     return sign(jsApiTicket, url)
   }
 
