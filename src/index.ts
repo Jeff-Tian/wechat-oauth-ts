@@ -287,11 +287,11 @@ export default class WechatOAuth {
     url: string
   }> {
     if (!jsApiTicket) {
-      jsApiTicket = await this.getJsApiTicket()
+      jsApiTicket = (await this.getJsApiTicket()).ticket
     }
 
     const sign = require('./sign')
-    return { ...sign(jsApiTicket, url), jsapi_ticket: jsApiTicket }
+    return sign(jsApiTicket, url)
   }
 
   private async processAccessToken(url: string, info) {
