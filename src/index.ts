@@ -89,8 +89,8 @@ export default class WechatOAuth {
     this.logger = logger
     this.getToken = !getToken
       ? (openId: string) => {
-        return this.store[openId]
-      }
+          return this.store[openId]
+        }
       : getToken
 
     if (!saveToken && (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'prod')) {
@@ -241,10 +241,10 @@ export default class WechatOAuth {
 
     return await wrapper(axios.get, raw)(
       url +
-      '?' +
-      querystring.stringify({
-        ticket: encodeURIComponent(ticket),
-      }),
+        '?' +
+        querystring.stringify({
+          ticket: encodeURIComponent(ticket),
+        }),
       {
         headers: {
           Accept:
@@ -276,11 +276,14 @@ export default class WechatOAuth {
     return await wrapper(axios.get)(url)
   }
 
-  public async jsSDKSign(url: string, jsApiTicket?: string): Promise<{
-    jsapi_ticket: string,
-    nonceStr: string,
-    signature: string,
-    timestamp: string,
+  public async jsSDKSign(
+    url: string,
+    jsApiTicket?: string,
+  ): Promise<{
+    jsapi_ticket: string
+    nonceStr: string
+    signature: string
+    timestamp: string
     url: string
   }> {
     if (!jsApiTicket) {
@@ -288,7 +291,7 @@ export default class WechatOAuth {
     }
 
     const sign = require('./sign')
-    return sign(jsApiTicket, url)
+    return { ...sign(jsApiTicket, url), jsapi_ticket: jsApiTicket }
   }
 
   private async processAccessToken(url: string, info) {
