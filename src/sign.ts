@@ -1,6 +1,8 @@
 import { configure, getLogger } from 'log4js'
 configure({
-  appenders: { cheese: { type: 'file', filename: 'logs/common.log' } },
+  appenders: {
+    cheese: { type: 'file', filename: 'logs/common.log' },
+  },
   categories: { default: { appenders: ['cheese'], level: 'debug' } },
 })
 
@@ -33,7 +35,7 @@ var raw = function(args) {
 }
 
 const fundebug = require('fundebug-nodejs')
-fundebug.apikey = 'a652f655e6a914002af501ca24fc08932ab91eaa80b53fe1ed74d3fffd788609'
+fundebug.apikey = '79d355172bd8a32d33f9487880e469f398baea90b8ce540d2d308f77be2bc77b'
 
 /**
  * @synopsis 签名算法
@@ -51,7 +53,7 @@ const sign = function(jsapi_ticket, url) {
     url,
     signature: '',
   }
-  var string = raw(ret)
+  const string = raw(ret)
   const jsSHA = require('jssha')
   const shaObj = new jsSHA(string, 'TEXT')
   ret.signature = shaObj.getHash('SHA-1', 'HEX')
