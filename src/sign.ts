@@ -59,8 +59,8 @@ const sign = function(jsapi_ticket, url) {
   const shaObj = new jsSHA(string, 'TEXT')
   ret.signature = shaObj.getHash('SHA-1', 'HEX')
 
-  fundebug.notify('signing', 'Signing', { args: { jsapi_ticket, url }, return: ret })
-  fundebug.notifyError('signing', 'Signing', { args: { jsapi_ticket, url }, return: ret })
+  fundebug.notify('signing', 'Signing', { metaData: { args: { jsapi_ticket, url }, return: ret } })
+  fundebug.notifyError('signing', 'Signing', { metaData: { args: { jsapi_ticket, url }, return: ret } })
   logger.debug('signing: ', { args: { jsapi_ticket, url }, return: ret })
 
   return ret
