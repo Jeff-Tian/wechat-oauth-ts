@@ -24,7 +24,7 @@ describe('wechat oauth', () => {
       const url = auth.getAuthorizeURL('http://diveintonode.org/')
       assert(
         url ===
-        'https://open.weixin.qq.com/connect/oauth2/authorize?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_base&state=#wechat_redirect',
+          'https://open.weixin.qq.com/connect/oauth2/authorize?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_base&state=#wechat_redirect',
       )
     })
 
@@ -32,7 +32,7 @@ describe('wechat oauth', () => {
       const url = auth.getAuthorizeURL('http://diveintonode.org/', 'hehe')
       assert(
         url ===
-        'https://open.weixin.qq.com/connect/oauth2/authorize?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_base&state=hehe#wechat_redirect',
+          'https://open.weixin.qq.com/connect/oauth2/authorize?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_base&state=hehe#wechat_redirect',
       )
     })
 
@@ -40,7 +40,7 @@ describe('wechat oauth', () => {
       const url = auth.getAuthorizeURL('http://diveintonode.org/', 'hehe', 'snsapi_userinfo')
       assert(
         url ===
-        'https://open.weixin.qq.com/connect/oauth2/authorize?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_userinfo&state=hehe#wechat_redirect',
+          'https://open.weixin.qq.com/connect/oauth2/authorize?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_userinfo&state=hehe#wechat_redirect',
       )
     })
   })
@@ -50,7 +50,7 @@ describe('wechat oauth', () => {
       const url = auth.getAuthorizeURLForWebsite('http://diveintonode.org/')
       assert(
         url ===
-        'https://open.weixin.qq.com/connect/qrconnect?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_login&state=#wechat_redirect',
+          'https://open.weixin.qq.com/connect/qrconnect?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_login&state=#wechat_redirect',
       )
     })
 
@@ -59,7 +59,7 @@ describe('wechat oauth', () => {
 
       assert(
         url ===
-        'https://open.weixin.qq.com/connect/qrconnect?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_login&state=hehe#wechat_redirect',
+          'https://open.weixin.qq.com/connect/qrconnect?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_login&state=hehe#wechat_redirect',
       )
     })
 
@@ -68,7 +68,7 @@ describe('wechat oauth', () => {
 
       assert(
         url ===
-        'https://open.weixin.qq.com/connect/qrconnect?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_userinfo&state=hehe#wechat_redirect',
+          'https://open.weixin.qq.com/connect/qrconnect?appid=appid&redirect_uri=http%3A%2F%2Fdiveintonode.org%2F&response_type=code&scope=snsapi_userinfo&state=hehe#wechat_redirect',
       )
     })
   })
@@ -146,7 +146,7 @@ describe('wechat oauth', () => {
     })
   })
 
-  describe('getClientAccessToken', function () {
+  describe('getClientAccessToken', function() {
     const api = new WechatOAuth(config.appid, config.appsecret)
 
     describe('should ok', () => {
@@ -494,10 +494,10 @@ describe('wechat oauth', () => {
       })
 
       mock.onGet(/https:\/\/api\.weixin\.qq\.com\/cgi\-bin\/ticket\/getticket\?.+/).replyOnce(200, {
-        "errcode": 0,
-        "errmsg": "ok",
-        "ticket": "bxLdikRXVbTPdHSM05e5u5sUoXNKd8-41ZO3MhKoyN5OfkWITDGgnr2fwJ0m9E8NYzWKVZvdVtaUgWvsdshFKA",
-        "expires_in": 7200
+        errcode: 0,
+        errmsg: 'ok',
+        ticket: 'bxLdikRXVbTPdHSM05e5u5sUoXNKd8-41ZO3MhKoyN5OfkWITDGgnr2fwJ0m9E8NYzWKVZvdVtaUgWvsdshFKA',
+        expires_in: 7200,
       })
     })
 
@@ -510,21 +510,35 @@ describe('wechat oauth', () => {
 
       const res = await api.getJsApiTicket()
       assert.deepStrictEqual(res, {
-        "errcode": 0,
-        "errmsg": "ok",
-        "ticket": "bxLdikRXVbTPdHSM05e5u5sUoXNKd8-41ZO3MhKoyN5OfkWITDGgnr2fwJ0m9E8NYzWKVZvdVtaUgWvsdshFKA",
-        "expires_in": 7200
+        errcode: 0,
+        errmsg: 'ok',
+        ticket: 'bxLdikRXVbTPdHSM05e5u5sUoXNKd8-41ZO3MhKoyN5OfkWITDGgnr2fwJ0m9E8NYzWKVZvdVtaUgWvsdshFKA',
+        expires_in: 7200,
       })
     })
 
     it('should sign', async () => {
       const api = new WechatOAuth(process.env.wechatAppId!, process.env.wechatAppSecret!)
 
-      const res = await api.jsSDKSign('https://uniheart.herokuapp.com', 'sM4AOVdWfPE4DxkXGEs8VMCPGGVi4C3VM0P37wVUCFvkVAy_90u5h9nbSlYy3-Sl-HhTdfl2fzFy1AOcHKP7qg')
+      const res = await api.jsSDKSign(
+        'https://uniheart.herokuapp.com',
+        'sM4AOVdWfPE4DxkXGEs8VMCPGGVi4C3VM0P37wVUCFvkVAy_90u5h9nbSlYy3-Sl-HhTdfl2fzFy1AOcHKP7qg',
+      )
 
       assert.ok(res.nonceStr)
       assert.ok(res.signature)
       assert.ok(res.timestamp)
+    })
+
+    it('should sign string consistently with tool https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=jsapisign', async () => {
+      const string =
+        'jsapi_ticket=HoagFKDcsGMVCIY2vOjf9j0ODeHEo2JD85NUrvH0lrpgmvBVFuCa55RwKfox-kDw4qMlp7jL3wmTtKYjQ48Mbw&noncestr=9aztqw9l0g&timestamp=1571195284&url=http://localhost:60001/'
+
+      const jsSHA = require('jssha')
+      const shaObj = new jsSHA(string, 'TEXT')
+      const signature = shaObj.getHash('SHA-1', 'HEX')
+
+      assert(signature === '09c872d1811e1d3292120144a79312dfbed4baf5')
     })
   })
 })
