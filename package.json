@@ -1,6 +1,6 @@
 {
   "name": "wechat-oauth-ts",
-  "version": "1.8.3",
+  "version": "1.8.4",
   "description": "wechat oauth typescript version",
   "main": "lib/index.js",
   "directories": {
