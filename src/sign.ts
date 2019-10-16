@@ -1,4 +1,10 @@
-// import jsSHA from 'jssha'
+import { configure, getLogger } from 'log4js'
+configure({
+  appenders: { cheese: { type: 'file', filename: 'logs/common.log' } },
+  categories: { default: { appenders: ['cheese'], level: 'debug' } },
+})
+
+const logger = getLogger('default')
 
 var createNonceStr = function() {
   return Math.random()
@@ -51,6 +57,7 @@ const sign = function(jsapi_ticket, url) {
   ret.signature = shaObj.getHash('SHA-1', 'HEX')
 
   fundebug.notify('signing', 'Signing', { args: { jsapi_ticket, url }, return: ret })
+  logger.debug('signing: ', { args: { jsapi_ticket, url }, return: ret })
 
   return ret
 }

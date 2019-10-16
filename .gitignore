@@ -54,5 +54,6 @@ logs/
 .vscode
 lib
 
+
 .nyc_output
 docs
