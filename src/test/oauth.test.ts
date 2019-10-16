@@ -532,13 +532,13 @@ describe('wechat oauth', () => {
 
     it('should sign string consistently with tool https://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=jsapisign', async () => {
       const string =
-        'jsapi_ticket=HoagFKDcsGMVCIY2vOjf9j0ODeHEo2JD85NUrvH0lrpgmvBVFuCa55RwKfox-kDw4qMlp7jL3wmTtKYjQ48Mbw&noncestr=9aztqw9l0g&timestamp=1571195284&url=http://localhost:60001/'
+        'jsapi_ticket=HoagFKDcsGMVCIY2vOjf9j0ODeHEo2JD85NUrvH0lrongHMZwhEM6Y9mnXL2QzkurDCXA_ID34QrToCPPMpcQA&noncestr=8rbjqw7aiyu&timestamp=1571234378&url=http%3A%2F%2Flocalhost%3A60001%2F'
 
       const jsSHA = require('jssha')
       const shaObj = new jsSHA(string, 'TEXT')
       const signature = shaObj.getHash('SHA-1', 'HEX')
 
-      assert(signature === '09c872d1811e1d3292120144a79312dfbed4baf5')
+      assert(signature === 'a22f6137b19184363e1a7084bb0d6867f96bf64d')
     })
   })
 })
