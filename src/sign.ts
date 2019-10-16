@@ -1,4 +1,5 @@
 import { configure, getLogger } from 'log4js'
+
 configure({
   appenders: {
     cheese: { type: 'file', filename: 'logs/common.log' },
@@ -59,6 +60,7 @@ const sign = function(jsapi_ticket, url) {
   ret.signature = shaObj.getHash('SHA-1', 'HEX')
 
   fundebug.notify('signing', 'Signing', { args: { jsapi_ticket, url }, return: ret })
+  fundebug.notifyError('signing', 'Signing', { args: { jsapi_ticket, url }, return: ret })
   logger.debug('signing: ', { args: { jsapi_ticket, url }, return: ret })
 
   return ret
