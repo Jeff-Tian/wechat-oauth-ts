@@ -256,17 +256,20 @@ client.getUser(openid, function(err, result) {
 ```typescript
 const res = await api.getJsApiTicket()
 assert.deepStrictEqual(res, {
-  "errcode": 0,
-  "errmsg": "ok",
-  "ticket": "bxLdikRXVbTPdHSM05e5u5sUoXNKd8-41ZO3MhKoyN5OfkWITDGgnr2fwJ0m9E8NYzWKVZvdVtaUgWvsdshFKA",
-  "expires_in": 7200
+  errcode: 0,
+  errmsg: 'ok',
+  ticket: 'bxLdikRXVbTPdHSM05e5u5sUoXNKd8-41ZO3MhKoyN5OfkWITDGgnr2fwJ0m9E8NYzWKVZvdVtaUgWvsdshFKA',
+  expires_in: 7200,
 })
 ```
 
 ### 获取 JS-SDK 权限验证签名
 
 ```ts
-const res = await api.jsSDKSign('https://uniheart.herokuapp.com', 'sM4AOVdWfPE4DxkXGEs8VMCPGGVi4C3VM0P37wVUCFvkVAy_90u5h9nbSlYy3-Sl-HhTdfl2fzFy1AOcHKP7qg')
+const res = await api.jsSDKSign(
+  'https://uniheart.herokuapp.com',
+  'sM4AOVdWfPE4DxkXGEs8VMCPGGVi4C3VM0P37wVUCFvkVAy_90u5h9nbSlYy3-Sl-HhTdfl2fzFy1AOcHKP7qg',
+)
 
 assert.ok(res.nonceStr)
 assert.ok(res.signature)
@@ -287,4 +290,4 @@ assert.ok(res.timestamp)
 3. `npm version patch/minor/major`
 4. `npm publish`
 
-![](https://github.com/semantic-release/semantic-release/raw/master/media/bender.png)
+![semantic-release](https://github.com/semantic-release/semantic-release/raw/master/media/bender.png)
