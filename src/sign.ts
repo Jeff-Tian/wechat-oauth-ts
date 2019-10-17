@@ -47,12 +47,11 @@ fundebug.apikey = '79d355172bd8a32d33f9487880e469f398baea90b8ce540d2d308f77be2bc
  * @returns
  */
 const sign = function(jsapi_ticket, url) {
-  let ret = {
+  let ret: any = {
     jsapi_ticket,
     nonceStr: createNonceStr(),
     timestamp: createTimestamp(),
     url,
-    signature: '',
   }
   const string = raw(ret)
 
